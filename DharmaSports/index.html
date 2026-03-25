@@ -9,16 +9,72 @@
 </head>
 
 <body>
-  <header>
-    <h1>Dhama Sports</h1>
+  <header class="bg-dark text-white py-3 position-sticky top-0 z-3 shadow">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
 
-    <nav>
-      <a href="#inicio">Início</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
-    </nav>
+        <!-- Logo à esquerda -->
+        <div class="logo">
+          <h1 class="h3 mb-0">Dhama Sports</h1>
+          <p class="small opacity-75 mb-0">Camisas de time com estilo</p>
+        </div>
+
+        <!-- Menu Centralizado -->
+        <nav class="menu">
+          <a href="#inicio" class="text-white text-decoration-none mx-2 mx-lg-3">Início</a>
+          <a href="#produtos" class="text-white text-decoration-none mx-2 mx-lg-3">Produtos</a>
+          <a href="#sobre" class="text-white text-decoration-none mx-2 mx-lg-3">Sobre</a>
+          <a href="#contato" class="text-white text-decoration-none mx-2 mx-lg-3">Contato</a>
+        </nav>
+
+        <!-- Barra de pesquisa + sacola à direita -->
+        <div class="d-flex align-items-center gap-3">
+          <!-- Barra de pesquisa -->
+          <div class="search-wrapper">
+            <div class="input-group">
+              <span class="input-group-text bg-white border-0">
+                <i class="fas fa-search text-secondary"></i>
+              </span>
+              <input type="text" id="searchInput" class="form-control border-0" placeholder="Pesquisar produtos...">
+            </div>
+          </div>
+
+          <!-- Sacola/Carrinho -->
+          <div class="cart-icon position-relative" onclick="openCart()">
+            <i class="fas fa-shopping-bag fa-2x"></i>
+            <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+              0
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
+         
+  <!-- Overlay do carrinho -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeCart()"></div>
+
+  <!-- Modal do carrinho (lateral) -->
+  <div class="cart-modal bg-white shadow-lg" id="cartModal">
+    <div class="cart-modal-header bg-dark text-white p-3 d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">
+        <i class="fas fa-shopping-bag"></i> Meu Carrinho
+      </h5>
+      <button class="btn-close btn-close-white" onclick="closeCart()"></button>
+    </div>
+    <div class="cart-items p-3" id="cartItems">
+      <p class="text-center text-secondary">Seu carrinho está vazio</p>
+    </div>
+    <div class="cart-total p-3 border-top bg-white">
+      <h5 class="mb-3">Total: R$ <span id="cartTotal">0.00</span></h5>
+      <button class="btn btn-success w-100" onclick="checkout()">
+        <i class="fab fa-whatsapp"></i> Finalizar Compra
+      </button>
+    </div>
+  </div>
+
+
+  // Seção início com carrossel
   <section id="inicio">
     <h2>Bem-vindo à Dhama Sports</h2>
     <p>Encontre as melhores camisas de futebol para torcer com estilo e qualidade.</p>
