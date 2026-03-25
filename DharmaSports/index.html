@@ -1,128 +1,749 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dhama Sports | Camisas de Time</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Dharma Sports | Camisas de Time - Preto, Branco e Verde</title>
+    <!-- Bootstrap 5 CSS + Icons + Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Swiper CSS para carrossel avançado -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        /* Cores principais: Preto (#000000), Branco (#FFFFFF), Verde (#00A86B) */
+        :root {
+            --dharma-black: #000000;
+            --dharma-white: #FFFFFF;
+            --dharma-green: #00A86B;
+            --dharma-green-dark: #1B5E2A;
+            --dharma-green-light: #4CAF50;
+            --dharma-gray: #1a1a1a;
+        }
 
-  <!-- Ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        /* Header com altura reduzida - menos padding */
+        .navbar-dharma {
+            background-color: var(--dharma-black);
+            padding: 0.4rem 1rem;
+            border-bottom: 2px solid var(--dharma-green);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-dharma {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: var(--dharma-white);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dharma i {
+            color: var(--dharma-green);
+            font-size: 1.6rem;
+        }
+
+        .logo-dharma span {
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--dharma-green) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+
+        /* Barra de busca estilo preto/branco/verde */
+        .search-wrapper {
+            width: 260px;
+        }
+        .search-wrapper .input-group {
+            border-radius: 40px;
+            overflow: hidden;
+            background: var(--dharma-white);
+            border: 1px solid var(--dharma-green);
+        }
+        .search-wrapper .form-control {
+            border: none;
+            background-color: var(--dharma-white);
+            font-size: 0.85rem;
+            padding: 0.45rem 1rem;
+            color: var(--dharma-black);
+        }
+        .search-wrapper .form-control:focus {
+            box-shadow: none;
+        }
+        .search-wrapper .form-control::placeholder {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        .search-wrapper .btn-search {
+            background-color: var(--dharma-green);
+            border: none;
+            color: var(--dharma-white);
+            padding: 0 16px;
+            font-size: 0.9rem;
+        }
+        .search-wrapper .btn-search:hover {
+            background-color: var(--dharma-green-dark);
+        }
+
+        /* ícones do carrinho e contador - tamanho ajustado */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            background: var(--dharma-gray);
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.2s;
+            margin-left: 12px;
+            border: 1px solid var(--dharma-green);
+        }
+        .cart-icon:hover {
+            background: var(--dharma-green);
+            transform: scale(1.03);
+        }
+        .cart-icon i {
+            color: var(--dharma-white);
+            font-size: 1.2rem;
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--dharma-green);
+            color: var(--dharma-black);
+            font-size: 0.65rem;
+            font-weight: 800;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 1px solid var(--dharma-white);
+        }
+
+        /* Menu de navegação - compacto */
+        .nav-links {
+            gap: 1.5rem;
+        }
+        .nav-links .nav-link {
+            color: var(--dharma-white);
+            font-weight: 030;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .nav-links .nav-link:hover,
+        .nav-links .nav-link.active {
+            color: var(--dharma-green);
+        }
+
+        /* carrossel principal */
+        .hero-carousel {
+            display: none; /* Remover caixa preta */
+            margin-top: 0;
+            border-radius: 0 0 30px 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-bottom: 3px solid var(--dharma-green);
+        }
+        .carousel-item img {
+            object-fit: cover;
+            height: 300px;
+            filter: brightness(0.85);
+            width: 100%;
+        }
+        .carousel-indicators button {
+            background-color: var(--dharma-white);
+        }
+        .carousel-indicators .active {
+            background-color: var(--dharma-green);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item img {
+                height: 280px;
+            }
+            .search-wrapper {
+                width: 160px;
+            }
+            .logo-dharma {
+                font-size: 1.2rem;
+            }
+            .logo-dharma i {
+                font-size: 1.3rem;
+            }
+            .nav-links {
+                gap: 0.8rem;
+            }
+        }
+
+        /* Seção de produtos - carrossel swiper */
+        /* TÍTULO REDUZIDO PELA METADE - menor tamanho e menos margem */
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+            color: var(--dharma-black);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 45px;
+            height: 3px;
+            background: var(--dharma-green);
+            border-radius: 3px;
+        }
+        
+        /* Container do cabeçalho da seção mais compacto */
+        .section-header {
+            margin-bottom: 1rem !important;
+        }
+        
+        /* Cards de produtos - SEM texto nas caixas, apenas imagem e preço */
+        .product-card {
+            background: var(--dharma-white);
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 168, 107, 0.2);
+            border-bottom: 3px solid var(--dharma-green);
+        }
+        .product-img {
+            height: 280px;
+            object-fit: cover;
+            width: 100%;
+            transition: 0.3s;
+            background: #1a1a1a;
+        }
+        .product-card:hover .product-img {
+            transform: scale(1.02);
+        }
+        .product-body {
+            padding: 0.8rem;
+            background: var(--dharma-white);
+            text-align: center;
+        }
+        /* Removido título, time - apenas preço e botão */
+        .product-price {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--dharma-green);
+            margin: 0 0 6px 0;
+        }
+        .btn-add-cart {
+            background-color: var(--dharma-black);
+            border: none;
+            border-radius: 40px;
+            padding: 6px 12px;
+            font-weight: 600;
+            width: 100%;
+            transition: 0.2s;
+            color: var(--dharma-white);
+            font-size: 0.8rem;
+        }
+        .btn-add-cart:hover {
+            background-color: var(--dharma-green);
+            color: var(--dharma-black);
+        }
+        .badge-new {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: var(--dharma-green);
+            color: var(--dharma-black);
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Swiper carrossel estilização */
+        .products-swiper {
+            padding: 8px 5px 25px 5px;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            background-color: var(--dharma-black);
+            color: var(--dharma-green);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--dharma-green);
+        }
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background-color: var(--dharma-green);
+            color: var(--dharma-black);
+        }
+        .swiper-pagination-bullet-active {
+            background-color: var(--dharma-green);
+        }
+        .swiper-pagination {
+            bottom: 0px !important;
+        }
+
+        /* Footer preto e verde */
+        footer {
+            background: var(--dharma-black);
+            color: #ccc;
+            margin-top: 50px;
+            padding: 35px 0 20px;
+            border-top: 3px solid var(--dharma-green);
+        }
+        footer h5, footer h6 {
+            color: var(--dharma-green);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        footer hr {
+            background-color: var(--dharma-green);
+            opacity: 0.3;
+            margin: 15px 0;
+        }
+        footer .small {
+            font-size: 0.7rem;
+        }
+
+        /* Offcanvas carrinho */
+        .offcanvas {
+            background-color: var(--dharma-black);
+            color: var(--dharma-white);
+        }
+        .offcanvas-header {
+            border-bottom-color: var(--dharma-green);
+            padding: 1rem;
+        }
+        .offcanvas-title {
+            color: var(--dharma-green);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .cart-item-img {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--dharma-green);
+        }
+        .cart-total {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--dharma-green);
+        }
+        .btn-checkout {
+            background: var(--dharma-green);
+            border: none;
+            font-weight: 700;
+            padding: 10px;
+            border-radius: 40px;
+            color: var(--dharma-black);
+        }
+        .btn-checkout:hover {
+            background: var(--dharma-green-dark);
+            color: var(--dharma-white);
+        }
+        .list-group-item {
+            background-color: var(--dharma-black);
+            color: var(--dharma-white);
+            border-bottom-color: #2a2a2a !important;
+            padding: 0.8rem 0 !important;
+        }
+        .btn-outline-success {
+            border-color: var(--dharma-green);
+            color: var(--dharma-green);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+        }
+        .btn-outline-success:hover {
+            background-color: var(--dharma-green);
+            color: var(--dharma-black);
+        }
+        
+        /* Ajuste para o texto "Arraste para ver mais" menor */
+        .drag-text {
+            font-size: 0.7rem;
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .product-img {
+                height: 220px;
+            }
+            .section-title {
+                font-size: 1rem;
+            }
+            .drag-text {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-  <!-- 🔝 HEADER -->
-  <header class="bg-dark text-white py-3 position-sticky top-0 z-3 shadow">
-    <div class="container d-flex justify-content-between align-items-center flex-wrap">
+<!-- HEADER com altura reduzida -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dharma">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="navbar-brand logo-dharma" href="#">
+                <i class="bi bi-shield-fill-check"></i>
+                <span>DHARMA SPORTS</span>
+            </a>
 
-      <div>
-        <h1 class="h3 mb-0">Dhama Sports</h1>
-        <small>Camisas de time com estilo</small>
-      </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" style="background-color: var(--dharma-green); padding: 4px 8px;">
+                <span class="navbar-toggler-icon" style="font-size: 0.8rem;"></span>
+            </button>
 
-      <nav>
-        <a href="#inicio" class="text-white mx-2">Início</a>
-        <a href="#produtos" class="text-white mx-2">Produtos</a>
-        <a href="#sobre" class="text-white mx-2">Sobre</a>
-        <a href="#contato" class="text-white mx-2">Contato</a>
-      </nav>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 nav-links">
+                    <li class="nav-item"><a class="nav-link active" href="#">INÍCIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">LANÇAMENTOS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">TIMES</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">LIMITADA</a></li>
+                </ul>
+            </div>
 
-      <div class="d-flex align-items-center gap-3">
-        <input type="text" class="form-control" placeholder="Pesquisar...">
-
-        <div class="position-relative">
-          <i class="fas fa-shopping-bag fa-2x text-white"></i>
-          <span class="badge bg-warning position-absolute top-0 start-100 translate-middle">0</span>
+            <div class="d-flex align-items-center">
+                <div class="search-wrapper me-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar..." id="searchInput">
+                        <button class="btn btn-search" type="button" id="searchButton">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="cart-icon" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                    <i class="bi bi-bag-fill"></i>
+                    <span class="cart-count" id="cartCountBadge">0</span>
+                </div>
+            </div>
         </div>
-      </div>
+    </nav>
+</header>
 
+
+<!-- Seção de produtos em CARROSSEL com TÍTULO REDUZIDO -->
+<div class="container mb-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap section-header">
+        <h2 class="section-title">CAMISAS EXCLUSIVAS</h2>
+        <p class="text-muted drag-text" style="color: #2e7d32 !important; margin-bottom: 0;">⚡ Arraste</p>
     </div>
-  </header>
-
-  <!-- 🎞️ CARROSSEL -->
-  <section id="inicio">
-
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-
-      <div class="carousel-inner">
-
-        <div class="carousel-item active">
-          <img src="fundo1.png" class="d-block w-100">
+    
+    <!-- Swiper Carrossel -->
+    <div class="swiper products-swiper">
+        <div class="swiper-wrapper" id="swiperProductsWrapper">
+            <!-- Produtos serão inseridos dinamicamente -->
         </div>
-
-        <div class="carousel-item">
-          <img src="fundo2.png" class="d-block w-100">
-        </div>
-
-        <div class="carousel-item">
-          <img src="fundo3.png" class="d-block w-100">
-        </div>
-
-        <div class="carousel-item">
-          <img src="fundo4.png" class="d-block w-100">
-        </div>
-
-      </div>
-
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
+</div>
 
-  </section>
+<!-- Footer -->
+<footer class="text-center text-md-start">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-2">
+                <h5><i class="bi bi-shield-fill-check text-success"></i> Dharma Sports</h5>
+                <p class="small">Camisas oficiais com DNA verde e preto.</p>
+            </div>
+            <div class="col-md-4 mb-2">
+                <h6>Atendimento</h6>
+                <ul class="list-unstyled small">
+                    <li><i class="bi bi-envelope text-success"></i> contato@dharmasports.com</li>
+                    <li><i class="bi bi-telephone text-success"></i> (11) 4002-8922</li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-2">
+                <h6>Pagamento</h6>
+                <i class="bi bi-credit-card fs-5 me-2 text-success"></i>
+                <i class="bi bi-cash-stack fs-5 me-2 text-success"></i>
+                <i class="bi bi-bank fs-5 text-success"></i>
+            </div>
+        </div>
+        <hr>
+        <p class="small text-center mb-0">© 2025 Dharma Sports</p>
+    </div>
+</footer>
 
-  <!-- 🛍️ PRODUTOS -->
-  <section id="produtos" class="text-center p-5 bg-light">
-    <h2>Produtos em Destaque</h2>
-    <p>✔ Produtos de qualidade</p>
-    <p>✔ Entrega rápida</p>
-    <p>✔ Atendimento via WhatsApp</p>
-  </section>
+<!-- Offcanvas Carrinho -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title"><i class="bi bi-bag-check-fill text-success"></i> Minha Sacola</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+        <div id="cartItemsList" class="flex-grow-1">
+            <div class="text-center py-5" style="color: #aaa;">Sua sacola está vazia.</div>
+        </div>
+        <div class="border-top pt-3 mt-auto" style="border-color: var(--dharma-green) !important;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="fw-semibold text-white">Total:</span>
+                <span class="cart-total" id="cartTotalPrice">R$ 0,00</span>
+            </div>
+            <button class="btn btn-checkout w-100" id="finalizeBtn">Finalizar compra</button>
+            <button class="btn btn-outline-light w-100 mt-2" data-bs-dismiss="offcanvas">Continuar</button>
+        </div>
+    </div>
+</div>
 
-  <!-- 🏢 SOBRE -->
-  <section id="sobre" class="text-center p-5">
-    <h2>Sobre a Dhama Sports</h2>
-    <p>
-      Loja especializada em camisas de futebol, trazendo qualidade, estilo e confiança para os clientes.
-    </p>
-  </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Catálogo de produtos
+    const products = [
+        { id: 1, name: "Imagem", price: 259.90,  isNew: true },
+        { id: 2, name: "Imagem",price: 259.90, isNew: false },
+        { id: 3, name: "Imagem",price: 289.90,isNew: true },
+        { id: 4, name: "Imagem",price: 319.90,isNew: false },
+        { id: 5, name: "Imagem",price: 199.90,isNew: false },
+        { id: 6, name: "Imagem", price: 349.90,isNew: true },
+        { id: 7, name: "Imagem", price: 229.90,isNew: false },
+        { id: 8, name: "Imagem", price: 429.90,isNew: true }
+    ];
 
-  <!-- 📲 CONTATO -->
-  <section id="contato" class="text-center p-5 bg-light">
-    <h2>Contato</h2>
+    let cart = [];
+    let swiperInstance = null;
 
-    <a href="https://wa.me/5531982644787?text=Olá,%20quero%20comprar%20uma%20camisa" target="_blank" class="btn btn-success m-2">
-      <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
+    function updateCartUI() {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const badge = document.getElementById('cartCountBadge');
+        if (badge) badge.innerText = totalItems;
 
-    <a href="https://www.instagram.com/dharmasports_/" target="_blank" class="btn btn-danger m-2">
-      <i class="fab fa-instagram"></i> Instagram
-    </a>
+        const cartContainer = document.getElementById('cartItemsList');
+        const totalSpan = document.getElementById('cartTotalPrice');
+        if (!cartContainer) return;
 
-    <a href="https://www.tiktok.com/@dharmasports_" target="_blank" class="btn btn-dark m-2">
-      <i class="fab fa-tiktok"></i> TikTok
-    </a>
+        if (cart.length === 0) {
+            cartContainer.innerHTML = `<div class="text-center py-5" style="color: #aaa;">Sua sacola está vazia.</div>`;
+            if (totalSpan) totalSpan.innerText = 'R$ 0,00';
+            return;
+        }
 
-  </section>
+        let html = `<div class="list-group list-group-flush">`;
+        let total = 0;
+        cart.forEach((item) => {
+            const subtotal = item.price * item.quantity;
+            total += subtotal;
+            html += `
+                <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-0 border-bottom">
+                    <div class="d-flex gap-2">
+                        <img src="${item.image}" class="cart-item-img" alt="${item.name}">
+                        <div>
+                            <h6 class="mb-0 fw-bold text-white" style="font-size: 0.85rem;">${item.name}</h6>
+                            <div class="mt-1">
+                                <span class="fw-semibold text-success" style="font-size: 0.85rem;">R$ ${item.price.toFixed(2)}</span>
+                                <div class="btn-group btn-group-sm ms-2" role="group">
+                                    <button class="btn btn-outline-success btn-qty-minus" data-id="${item.id}">-</button>
+                                    <span class="px-2 fw-bold text-white" style="font-size: 0.8rem;">${item.quantity}</span>
+                                    <button class="btn btn-outline-success btn-qty-plus" data-id="${item.id}">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger rounded-circle remove-item" data-id="${item.id}" style="width: 28px; height: 28px; padding: 0;"><i class="bi bi-trash3" style="font-size: 0.7rem;"></i></button>
+                </div>
+            `;
+        });
+        html += `</div>`;
+        cartContainer.innerHTML = html;
+        if (totalSpan) totalSpan.innerText = `R$ ${total.toFixed(2)}`;
 
-  <!-- 🔻 FOOTER -->
-  <footer class="bg-dark text-white text-center p-3">
-    <p>© 2026 Dhama Sports</p>
-  </footer>
+        document.querySelectorAll('.btn-qty-minus').forEach(btn => {
+            btn.addEventListener('click', (e) => changeQuantity(parseInt(btn.dataset.id), -1));
+        });
+        document.querySelectorAll('.btn-qty-plus').forEach(btn => {
+            btn.addEventListener('click', (e) => changeQuantity(parseInt(btn.dataset.id), 1));
+        });
+        document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.addEventListener('click', (e) => removeFromCart(parseInt(btn.dataset.id)));
+        });
+    }
 
-  <!-- JS Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    function changeQuantity(productId, delta) {
+        const index = cart.findIndex(item => item.id === productId);
+        if (index !== -1) {
+            const newQty = cart[index].quantity + delta;
+            if (newQty <= 0) cart.splice(index, 1);
+            else cart[index].quantity = newQty;
+            updateCartUI();
+            saveCartToLocalStorage();
+        }
+    }
 
+    function removeFromCart(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        updateCartUI();
+        saveCartToLocalStorage();
+    }
+
+    function addToCart(product) {
+        const existing = cart.find(item => item.id === product.id);
+        if (existing) existing.quantity += 1;
+        else cart.push({ ...product, quantity: 1 });
+        updateCartUI();
+        saveCartToLocalStorage();
+        
+        const toast = document.createElement('div');
+        toast.className = 'position-fixed bottom-0 end-0 p-3';
+        toast.style.zIndex = '1090';
+        toast.innerHTML = `<div class="alert alert-success alert-dismissible fade show" style="background: #00A86B; color:#000; font-weight:600; padding: 8px 16px; font-size: 0.8rem;"><i class="bi bi-check-circle-fill"></i> Adicionado!</div>`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 1500);
+    }
+
+    function saveCartToLocalStorage() {
+        localStorage.setItem('dharmaCartGreen', JSON.stringify(cart));
+    }
+
+    function loadCartFromStorage() {
+        const stored = localStorage.getItem('dharmaCartGreen');
+        if (stored) try { cart = JSON.parse(stored); updateCartUI(); } catch(e) {}
+    }
+
+    // Renderizar produtos no Swiper
+    function renderSwiperProducts(filterText = '') {
+        let filtered = products;
+        if (filterText.trim()) {
+            const term = filterText.trim().toLowerCase();
+            filtered = products.filter(p => p.name.toLowerCase().includes(term) || p.team.toLowerCase().includes(term));
+        }
+        
+        const wrapper = document.getElementById('swiperProductsWrapper');
+        if (!wrapper) return;
+        
+        if (filtered.length === 0) {
+            wrapper.innerHTML = `<div class="swiper-slide text-center py-5">Nenhuma camisa encontrada</div>`;
+            if (swiperInstance) swiperInstance.update();
+            return;
+        }
+        
+        let slidesHtml = '';
+        filtered.forEach(prod => {
+            slidesHtml += `
+                <div class="swiper-slide">
+                    <div class="card product-card h-100 position-relative">
+                        
+                        <img src="${prod.image}" class="product-img" alt="${prod.name}">
+                        <div class="product-body">
+                            <div class="product-price">R$ ${prod.price.toFixed(2)}</div>
+                            <button class="btn btn-add-cart add-to-cart-btn" data-id="${prod.id}">
+                                <i class="bi bi-cart-plus me-1"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        wrapper.innerHTML = slidesHtml;
+        
+        if (swiperInstance) {
+            swiperInstance.update();
+            swiperInstance.slideTo(0);
+        } else {
+            swiperInstance = new Swiper('.products-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 15,
+                loop: filtered.length >= 4,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    576: { slidesPerView: 2, spaceBetween: 15 },
+                    768: { slidesPerView: 3, spaceBetween: 20 },
+                    1024: { slidesPerView: 4, spaceBetween: 20 }
+                }
+            });
+        }
+        
+        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const prodId = parseInt(btn.dataset.id);
+                const product = products.find(p => p.id === prodId);
+                if (product) addToCart(product);
+            });
+        });
+    }
+
+    function setupSearch() {
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchButton');
+        const performSearch = () => {
+            const term = searchInput?.value || '';
+            renderSwiperProducts(term);
+        };
+        searchBtn?.addEventListener('click', performSearch);
+        searchInput?.addEventListener('keyup', (e) => { if (e.key === 'Enter') performSearch(); });
+    }
+
+    function setupCheckout() {
+        document.getElementById('finalizeBtn')?.addEventListener('click', () => {
+            if (cart.length === 0) alert("Sacola vazia!");
+            else {
+                alert("Compra finalizada! Obrigado!");
+                cart = [];
+                updateCartUI();
+                saveCartToLocalStorage();
+                const offcanvasEl = document.getElementById('cartOffcanvas');
+                bootstrap.Offcanvas.getInstance(offcanvasEl)?.hide();
+            }
+        });
+    }
+
+    function init() {
+        renderSwiperProducts('');
+        setupSearch();
+        loadCartFromStorage();
+        setupCheckout();
+        updateCartUI();
+    }
+    init();
+</script>
 </body>
 </html>
