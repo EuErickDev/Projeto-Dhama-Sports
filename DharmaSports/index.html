@@ -104,6 +104,18 @@
       backdrop-filter: blur(4px);
       font-family: monospace;
       border: 2px solid #2ecc71;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .banner-animado::before {
+        font-size: 1.8rem;
+        padding: 0.5rem 1rem;
+        white-space: nowrap;
+      }
+      .banner-animado {
+        height: 300px;
+      }
     }
 
     :root {
@@ -245,7 +257,7 @@
       padding: 0.5rem 1rem;
     }
 
-    /* Carrinho sidebar - NOVO DESIGN */
+    /* Carrinho sidebar */
     .cart-sidebar {
       position: fixed;
       top: 0;
@@ -369,23 +381,6 @@
       border: 1px solid #2ecc71;
     }
 
-    .promo-banner {
-      background: linear-gradient(135deg, #1a4d2a, #0e2a1f);
-      border-radius: 1.5rem;
-      border: 2px solid #2ecc71;
-      box-shadow: 0 0 20px rgba(46,204,113,0.3);
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 2rem;
-    }
-
-    .btn-dark-custom {
-      background: var(--primary-green);
-      color: #000;
-      font-weight: 600;
-    }
-    .btn-dark-custom:hover { background: #fff; color: #000; }
-
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -494,21 +489,6 @@
       color: #000;
     }
 
-    /* Countdown timer */
-    .countdown-timer {
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(4px);
-      padding: 8px 16px;
-      border-radius: 50px;
-      display: inline-flex;
-      gap: 10px;
-    }
-    .countdown-timer span {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-
-    /* Slick custom */
     .slick-prev, .slick-next {
       background: #2ecc71 !important;
       border-radius: 50%;
@@ -523,7 +503,6 @@
       padding: 10px;
     }
 
-    /* Animações */
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
       25% { transform: translateX(-5px); }
@@ -533,14 +512,12 @@
       animation: shake 0.3s ease-in-out;
     }
 
-    /* Estrelas de avaliação */
     .rating-stars {
       color: #ffc107;
       font-size: 0.8rem;
       margin-bottom: 0.5rem;
     }
 
-    /* Botão favorito */
     .favorite-btn {
       position: absolute;
       top: 12px;
@@ -561,13 +538,6 @@
       color: #ff4757;
     }
 
-    /* Range slider */
-    .price-range {
-      width: 100%;
-      margin: 10px 0;
-    }
-
-    /* Paginação */
     .pagination .page-item .page-link {
       background: #1f1f1f;
       border-color: #2ecc71;
@@ -579,7 +549,6 @@
       color: black;
     }
 
-    /* Botões de navegação novos */
     .nav-link-custom {
       color: #fff;
       text-decoration: none;
@@ -591,13 +560,17 @@
     .nav-link-custom:hover {
       color: #2ecc71;
     }
+
+    .z-3 {
+      z-index: 1030 !important;
+    }
   </style>
 </head>
 <body>
 
-<!-- HEADER com novos botões -->
+<!-- HEADER -->
 <header class="bg-black text-white py-3 position-sticky top-0 z-3 shadow" style="border-bottom: 2px solid #2ecc71;">
-  <div class="container d-flex justify-content-between align-items-center flex-wrap">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3">
     <div class="d-flex align-items-center">
       <div class="logo-circle"><i class="fas fa-futbol fa-2x" style="color:#000;"></i></div>
       <div>
@@ -605,13 +578,13 @@
         <small>Camisas de time e conjuntos esportivos</small>
       </div>
     </div>
-    <nav>
-      <a href="#inicio" class="nav-link-custom mx-2">Início</a>
-      <a href="#produtos" class="nav-link-custom mx-2">Produtos</a>
-      <a href="#sobre" class="nav-link-custom mx-2">Sobre</a>
-      <a href="#contato" class="nav-link-custom mx-2">Contato</a>
-      <a href="#" id="favoritesNavBtn" class="nav-link-custom mx-2"><i class="fas fa-heart"></i> Favoritos</a>
-      <a href="#" id="accountNavBtn" class="nav-link-custom mx-2"><i class="fas fa-user"></i> Minha Conta</a>
+    <nav class="d-flex flex-wrap gap-2">
+      <a href="#inicio" class="nav-link-custom">Início</a>
+      <a href="#produtos" class="nav-link-custom">Produtos</a>
+      <a href="#sobre" class="nav-link-custom">Sobre</a>
+      <a href="#contato" class="nav-link-custom">Contato</a>
+      <a href="#" id="favoritesNavBtn" class="nav-link-custom"><i class="fas fa-heart"></i> Favoritos</a>
+      <a href="#" id="accountNavBtn" class="nav-link-custom"><i class="fas fa-user"></i> Minha Conta</a>
     </nav>
     <div class="d-flex align-items-center gap-3">
       <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar produtos..." style="width: 200px;">
@@ -623,7 +596,7 @@
   </div>
 </header>
 
-<!-- Minha Conta -->
+<!-- MODAL CONTA -->
 <div class="modal fade" id="accountModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content bg-dark text-white">
@@ -704,7 +677,7 @@
   </div>
 </section>
 
-<!-- PRODUTOS (com filtro de preço e favoritos) -->
+<!-- PRODUTOS -->
 <section id="produtos" class="container py-5">
   <div class="text-center mb-4" data-aos="fade-up">
     <h2 class="section-title">⚡ Coleção Esportiva</h2>
@@ -718,7 +691,7 @@
       <button class="filter-btn" data-category="Seleções">Seleções</button>
       <button class="filter-btn" data-category="Retrô">Retrô</button>
     </div>
-    <div class="d-flex gap-3 align-items-center">
+    <div class="d-flex gap-3 align-items-center flex-wrap">
       <div><input type="range" id="priceRange" min="0" max="200" step="10" value="200"> <span id="priceValue">Até R$ 200</span></div>
       <select id="sortSelect" class="sort-select"><option value="default">Ordenar</option><option value="price_asc">Menor preço</option><option value="price_desc">Maior preço</option></select>
     </div>
@@ -781,7 +754,7 @@
     <hr class="bg-secondary mt-4"><div class="text-center small">&copy; 2025 Dharma Sports - Todos os direitos reservados.</div></div>
 </footer>
 
-<!-- CARRINHO SIDEBAR (design melhorado) -->
+<!-- CARRINHO SIDEBAR -->
 <div class="overlay-cart" id="cartOverlay"></div>
 <div class="cart-sidebar" id="cartSidebar">
   <div class="cart-header"><h5><i class="fas fa-shopping-cart"></i> Meu Carrinho</h5><i class="fas fa-times fs-4" id="closeCart" style="cursor: pointer;"></i></div>
@@ -799,8 +772,8 @@
   </div>
 </div>
 
-<!-- MODAL PRODUTO (com personalização e tamanho) -->
-<div class="modal fade" id="productModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content bg-dark text-white"><div class="modal-header"><h5 class="modal-title" id="modalProductName">Produto</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row"><div class="col-md-6"><img id="modalProductImg" class="img-fluid rounded" src=""></div><div class="col-md-6"><h4 id="modalProductPrice"></h4><div class="rating-stars" id="modalRating"></div><p id="modalProductDesc">Tecido Dry-Fit, modelagem anatômica.</p><div class="mb-2"><label>Tamanho:</label><select id="modalSize" class="form-select bg-dark text-white"><option>P</option><option>M</option><option>G</option><option>GG</option></select></div>
+<!-- MODAL PRODUTO -->
+<div class="modal fade" id="productModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content bg-dark text-white"><div class="modal-header"><h5 class="modal-title" id="modalProductName">Produto</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row"><div class="col-md-6"><img id="modalProductImg" class="img-fluid rounded" src="https://placehold.co/400x400/111/2ecc71?text=Produto"></div><div class="col-md-6"><h4 id="modalProductPrice"></h4><div class="rating-stars" id="modalRating"></div><p id="modalProductDesc">Tecido Dry-Fit, modelagem anatômica.</p><div class="mb-2"><label>Tamanho:</label><select id="modalSize" class="form-select bg-dark text-white"><option>P</option><option>M</option><option>G</option><option>GG</option></select></div>
             <div class="mb-2"><label><i class="fas fa-tshirt"></i> Personalização:</label>
               <select id="modalCustom" class="form-select bg-dark text-white">
                 <option value="none">Sem personalização</option>
@@ -819,23 +792,25 @@
   </div>
 </div>
 
-<!-- NEWSLETTER MODAL (popup) -->
+<!-- NEWSLETTER MODAL -->
 <div class="modal fade" id="newsletterModal" tabindex="-1" data-bs-backdrop="static"><div class="modal-dialog"><div class="modal-content bg-dark text-white"><div class="modal-header"><h5 class="modal-title">Não perca as ofertas!</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Assine nossa newsletter e ganhe 10% OFF na primeira compra!</p><input type="email" id="popupNewsEmail" class="form-control mb-3" placeholder="Seu melhor e-mail"><button class="btn btn-dark-custom w-100" id="popupSubscribe">Assinar e ganhar desconto</button></div></div></div></div>
 
 <!-- WHATSAPP FLUTUANTE -->
 <a href="https://wa.me/5531982644787?text=Olá!%20Vim%20do%20site%20Dharma%20Sports%20e%20gostaria%20de%20mais%20informações." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
-<!-- Scripts -->
+<!-- Scripts (carregados no final para evitar problemas) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
 <script>
+  // Inicialização AOS
   AOS.init({ duration: 800, once: true });
 
-  // Produtos (8 produtos) - CORRIGIDO
+    // Produtos (8 produtos) - CORRIGIDO
   const products = [
     { id: 1, name: "Camisa West Ham United Retrô", category: "Retrô", price: 109.90, rating: 4.8, icon: "fa-flag-checkered", images: { front: "camisa11.png", back: "camisa1.png" }, bestSeller: true },
     { id: 2, name: "Camisa Cruzeiro 2025", category: "Brasil", price: 189.90, rating: 4.9, icon: "fa-vest", images: { front: "camisa22.png", back: "camisa2.png" }, bestSeller: true },
@@ -847,41 +822,54 @@
     { id: 8, name: "Camisa Barcelona 2020/21", category: "Europa", price: 159.90, rating: 4.8, icon: "fa-basketball", images: { front: "camisa88.png", back: "camisa8.png" }, bestSeller: false }
   ];
 
+
   let cart = [], currentCategory = "todos", currentSort = "default", searchTerm = "", activeCoupon = false, shippingCost = 0;
   let maxPrice = 200, currentPage = 1, itemsPerPage = 8;
   let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   let onlyFavorites = false;
 
+  // Contador de visitas
   let visitorCount = localStorage.getItem('visitorCount') ? parseInt(localStorage.getItem('visitorCount')) : 0;
   visitorCount++;
   localStorage.setItem('visitorCount', visitorCount);
-  document.getElementById('visitorCounter').innerText = visitorCount;
+  const visitorSpan = document.getElementById('visitorCounter');
+  if (visitorSpan) visitorSpan.innerText = visitorCount;
 
   // Cookie banner
   if (!localStorage.getItem('cookiesAccepted')) {
     document.getElementById('cookieBanner').classList.add('show');
   }
-  document.getElementById('acceptCookies').addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    document.getElementById('cookieBanner').classList.remove('show');
-  });
+  const acceptBtn = document.getElementById('acceptCookies');
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      document.getElementById('cookieBanner').classList.remove('show');
+    });
+  }
 
   // Newsletter popup
   setTimeout(() => {
     if (!localStorage.getItem('newsletterShown')) {
-      new bootstrap.Modal(document.getElementById('newsletterModal')).show();
-      localStorage.setItem('newsletterShown', 'true');
+      const modalEl = document.getElementById('newsletterModal');
+      if (modalEl) {
+        new bootstrap.Modal(modalEl).show();
+        localStorage.setItem('newsletterShown', 'true');
+      }
     }
   }, 5000);
-  document.getElementById('popupSubscribe').addEventListener('click', () => {
-    const email = document.getElementById('popupNewsEmail').value;
-    if (email && email.includes('@')) {
-      alert('✅ Inscrição realizada! Você receberá 10% OFF no seu e-mail.');
-      bootstrap.Modal.getInstance(document.getElementById('newsletterModal')).hide();
-    } else alert('E-mail inválido.');
-  });
+  
+  const popupSubscribe = document.getElementById('popupSubscribe');
+  if (popupSubscribe) {
+    popupSubscribe.addEventListener('click', () => {
+      const email = document.getElementById('popupNewsEmail').value;
+      if (email && email.includes('@')) {
+        alert('✅ Inscrição realizada! Você receberá 10% OFF no seu e-mail.');
+        bootstrap.Modal.getInstance(document.getElementById('newsletterModal')).hide();
+      } else alert('E-mail inválido.');
+    });
+  }
 
-  // Renderização com paginação e filtros
+  // Funções de filtro e renderização
   function getFilteredProducts() {
     let filtered = [...products];
     if (onlyFavorites) {
@@ -916,7 +904,7 @@
           </div>
           <div class="card-body">
             <div class="rating-stars">${'★'.repeat(Math.floor(prod.rating))}${prod.rating % 1 ? '½' : ''}</div>
-            <span class="badge badge-green mb-2" style="background:#2ecc71; color:#000;">${prod.category}</span>
+            <span class="badge mb-2" style="background:#2ecc71; color:#000;">${prod.category}</span>
             <h5 class="card-title text-white">${prod.name}</h5>
             <p class="card-text fw-bold fs-4" style="color:#2ecc71;">R$ ${prod.price.toFixed(2)}</p>
             <button class="btn-add-cart btn" data-id="${prod.id}"><i class="fas fa-cart-plus"></i> Adicionar</button>
@@ -947,8 +935,8 @@
 
   function attachProductEvents() {
     document.querySelectorAll('.product-img').forEach(c => {
-      c.addEventListener('mouseenter', () => { c.querySelector('.img-badge').textContent = 'Verso'; });
-      c.addEventListener('mouseleave', () => { c.querySelector('.img-badge').textContent = 'Frente'; });
+      c.addEventListener('mouseenter', () => { const badge = c.querySelector('.img-badge'); if(badge) badge.textContent = 'Verso'; });
+      c.addEventListener('mouseleave', () => { const badge = c.querySelector('.img-badge'); if(badge) badge.textContent = 'Frente'; });
       c.addEventListener('click', () => { const prod = products.find(p => p.id == c.dataset.id); if(prod) openModal(prod); });
     });
     document.querySelectorAll('.btn-add-cart').forEach(btn => {
@@ -988,9 +976,6 @@
     const parcelas = 6;
     const valorParcela = product.price / parcelas;
     document.getElementById('installmentInfo').innerHTML = `${parcelas}x de R$ ${valorParcela.toFixed(2)} sem juros`;
-    document.getElementById('modalSize').value = "M";
-    document.getElementById('modalCustom').value = "none";
-    document.getElementById('modalQty').value = 1;
     const modal = new bootstrap.Modal(document.getElementById('productModal'));
     modal.show();
     document.getElementById('modalAddToCart').onclick = () => {
@@ -1019,22 +1004,38 @@
     }
     saveCart();
     openCartSidebar();
-    document.getElementById('cartIcon').classList.add('shake-animation');
-    setTimeout(() => document.getElementById('cartIcon').classList.remove('shake-animation'), 300);
+    const cartIcon = document.getElementById('cartIcon');
+    if (cartIcon) {
+      cartIcon.classList.add('shake-animation');
+      setTimeout(() => cartIcon.classList.remove('shake-animation'), 300);
+    }
     Toastify({ text: "✅ Produto adicionado ao carrinho!", duration: 2000, gravity: "top", position: "right", style: { background: "#2ecc71", color: "#000" } }).showToast();
   }
 
   function saveCart() { localStorage.setItem('dharma_cart', JSON.stringify(cart)); updateCartUI(); }
-  function loadCart() { let stored = localStorage.getItem('dharma_cart'); cart = stored ? JSON.parse(stored) : []; updateCartUI(); }
+  
+  function loadCart() { 
+    let stored = localStorage.getItem('dharma_cart'); 
+    cart = stored ? JSON.parse(stored) : []; 
+    updateCartUI(); 
+  }
 
   function updateCartUI() {
-    let container = document.getElementById('cartItemsList'), subtotalSpan = document.getElementById('cartSubtotal'), totalSpan = document.getElementById('cartTotal'), countSpan = document.getElementById('cartCount'), discountRow = document.getElementById('discountRow'), discountSpan = document.getElementById('discountValue'), freightSpan = document.getElementById('cartFrete');
+    let container = document.getElementById('cartItemsList'), 
+        subtotalSpan = document.getElementById('cartSubtotal'), 
+        totalSpan = document.getElementById('cartTotal'), 
+        countSpan = document.getElementById('cartCount'), 
+        discountRow = document.getElementById('discountRow'), 
+        discountSpan = document.getElementById('discountValue'), 
+        freightSpan = document.getElementById('cartFrete');
     if (!container) return;
     if (cart.length === 0) {
       container.innerHTML = '<div class="text-center text-muted py-4">Carrinho vazio</div>';
-      subtotalSpan.innerText = 'R$ 0,00'; totalSpan.innerText = 'R$ 0,00'; freightSpan.innerText = 'R$ 0,00';
+      if (subtotalSpan) subtotalSpan.innerText = 'R$ 0,00';
+      if (totalSpan) totalSpan.innerText = 'R$ 0,00';
+      if (freightSpan) freightSpan.innerText = 'R$ 0,00';
       if (countSpan) countSpan.innerText = '0';
-      discountRow.style.display = 'none';
+      if (discountRow) discountRow.style.display = 'none';
       return;
     }
     let subtotal = 0, html = '';
@@ -1046,10 +1047,13 @@
     container.innerHTML = html;
     let desconto = (activeCoupon && subtotal > 0) ? subtotal * 0.1 : 0;
     let total = subtotal + shippingCost - desconto;
-    subtotalSpan.innerText = `R$ ${subtotal.toFixed(2)}`;
-    freightSpan.innerText = `R$ ${shippingCost.toFixed(2)}`;
-    if (desconto > 0) { discountRow.style.display = 'flex'; discountSpan.innerText = `- R$ ${desconto.toFixed(2)}`; } else discountRow.style.display = 'none';
-    totalSpan.innerText = `R$ ${total.toFixed(2)}`;
+    if (subtotalSpan) subtotalSpan.innerText = `R$ ${subtotal.toFixed(2)}`;
+    if (freightSpan) freightSpan.innerText = `R$ ${shippingCost.toFixed(2)}`;
+    if (discountRow && discountSpan) {
+      if (desconto > 0) { discountRow.style.display = 'flex'; discountSpan.innerText = `- R$ ${desconto.toFixed(2)}`; } 
+      else discountRow.style.display = 'none';
+    }
+    if (totalSpan) totalSpan.innerText = `R$ ${total.toFixed(2)}`;
     if (countSpan) countSpan.innerText = cart.reduce((acc,i)=>acc+i.quantity,0);
     attachCartItemEvents();
   }
@@ -1072,18 +1076,64 @@
   }
 
   // Eventos do carrinho
-  document.getElementById('applyCoupon').addEventListener('click', () => { let code = document.getElementById('couponCode').value.trim().toUpperCase(); if (code === 'DHARMA10') { activeCoupon = true; alert('Cupom aplicado! 10% OFF.'); updateCartUI(); } else alert('Cupom inválido'); });
-  document.getElementById('calcShipping').addEventListener('click', () => { let cep = document.getElementById('cepInput').value.trim(); if (cep.length >= 8) { let last = parseInt(cep.slice(-1)); shippingCost = last % 2 === 0 ? 15 : 25; alert(`Frete: R$ ${shippingCost.toFixed(2)}`); updateCartUI(); } else alert('CEP inválido'); });
-  document.getElementById('trackBtn').addEventListener('click', () => { let code = document.getElementById('trackingCode').value; if(code) alert(`Rastreamento: Seu pedido ${code} está a caminho!`); else alert('Digite um código de rastreio'); });
-  document.getElementById('clearCartBtn').addEventListener('click', () => { if(confirm('Limpar todo o carrinho?')) { cart = []; activeCoupon = false; shippingCost = 0; saveCart(); } });
+  const applyCouponBtn = document.getElementById('applyCoupon');
+  if (applyCouponBtn) {
+    applyCouponBtn.addEventListener('click', () => { 
+      let code = document.getElementById('couponCode').value.trim().toUpperCase(); 
+      if (code === 'DHARMA10') { activeCoupon = true; alert('Cupom aplicado! 10% OFF.'); updateCartUI(); } 
+      else alert('Cupom inválido'); 
+    });
+  }
+  
+  const calcShippingBtn = document.getElementById('calcShipping');
+  if (calcShippingBtn) {
+    calcShippingBtn.addEventListener('click', () => { 
+      let cep = document.getElementById('cepInput').value.trim(); 
+      if (cep.length >= 8) { 
+        let last = parseInt(cep.slice(-1)); 
+        shippingCost = last % 2 === 0 ? 15 : 25; 
+        alert(`Frete: R$ ${shippingCost.toFixed(2)}`); 
+        updateCartUI(); 
+      } else alert('CEP inválido'); 
+    });
+  }
+  
+  const trackBtn = document.getElementById('trackBtn');
+  if (trackBtn) {
+    trackBtn.addEventListener('click', () => { 
+      let code = document.getElementById('trackingCode').value; 
+      if(code) alert(`Rastreamento: Seu pedido ${code} está a caminho!`); 
+      else alert('Digite um código de rastreio'); 
+    });
+  }
+  
+  const clearCartBtn = document.getElementById('clearCartBtn');
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener('click', () => { 
+      if(confirm('Limpar todo o carrinho?')) { cart = []; activeCoupon = false; shippingCost = 0; saveCart(); } 
+    });
+  }
 
   const sidebar = document.getElementById('cartSidebar'), overlay = document.getElementById('cartOverlay');
-  function openCartSidebar() { sidebar.classList.add('open'); overlay.classList.add('active'); }
-  function closeCartSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('active'); }
-  document.getElementById('cartIcon').addEventListener('click', openCartSidebar);
-  document.getElementById('closeCart').addEventListener('click', closeCartSidebar);
-  overlay.addEventListener('click', closeCartSidebar);
-  document.getElementById('checkoutBtn').addEventListener('click', () => { if (cart.length === 0) alert('Carrinho vazio'); else { alert(`Compra finalizada! Total: ${document.getElementById('cartTotal').innerText}\nObservações: ${document.getElementById('cartObs').value}`); cart = []; activeCoupon = false; shippingCost = 0; saveCart(); closeCartSidebar(); } });
+  function openCartSidebar() { if(sidebar) sidebar.classList.add('open'); if(overlay) overlay.classList.add('active'); }
+  function closeCartSidebar() { if(sidebar) sidebar.classList.remove('open'); if(overlay) overlay.classList.remove('active'); }
+  
+  const cartIcon = document.getElementById('cartIcon');
+  if (cartIcon) cartIcon.addEventListener('click', openCartSidebar);
+  const closeCart = document.getElementById('closeCart');
+  if (closeCart) closeCart.addEventListener('click', closeCartSidebar);
+  if (overlay) overlay.addEventListener('click', closeCartSidebar);
+  
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => { 
+      if (cart.length === 0) alert('Carrinho vazio'); 
+      else { 
+        alert(`Compra finalizada! Total: ${document.getElementById('cartTotal').innerText}\nObservações: ${document.getElementById('cartObs').value}`); 
+        cart = []; activeCoupon = false; shippingCost = 0; saveCart(); closeCartSidebar(); 
+      } 
+    });
+  }
 
   // Filtros
   document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
@@ -1094,61 +1144,117 @@
     currentPage = 1;
     renderProducts();
   }));
-  document.getElementById('sortSelect').addEventListener('change', (e) => { currentSort = e.target.value; currentPage = 1; renderProducts(); });
-  document.getElementById('searchInput').addEventListener('input', (e) => { searchTerm = e.target.value; onlyFavorites = false; currentPage = 1; renderProducts(); });
-  document.getElementById('priceRange').addEventListener('input', (e) => { maxPrice = parseInt(e.target.value); document.getElementById('priceValue').innerText = `Até R$ ${maxPrice}`; currentPage = 1; renderProducts(); });
-  document.getElementById('newsBtn').addEventListener('click', () => { let email = document.getElementById('newsEmail').value; if (email && email.includes('@')) { localStorage.setItem('newsletter', email); alert('✅ Inscrição realizada!'); } else alert('E-mail inválido.'); });
-  document.getElementById('contactForm').addEventListener('submit', (e) => { e.preventDefault(); alert('Mensagem enviada!'); e.target.reset(); });
-  window.addEventListener('scroll', () => { document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none'; });
-  document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  document.querySelectorAll('.heart-team').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); const team = btn.dataset.team; searchTerm = team; document.getElementById('searchInput').value = team; onlyFavorites = false; currentPage = 1; renderProducts(); document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' }); }));
-  document.querySelectorAll('.faq-question').forEach(q => { q.addEventListener('click', () => { let ans = q.nextElementSibling; ans.style.display = ans.style.display === 'block' ? 'none' : 'block'; }); });
-
-  // NOVOS BOTÕES: Favoritos e Minha Conta
-  document.getElementById('favoritesNavBtn').addEventListener('click', (e) => {
-    e.preventDefault();
-    onlyFavorites = true;
-    currentCategory = "todos";
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    currentPage = 1;
-    renderProducts();
-    document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' });
+  
+  const sortSelect = document.getElementById('sortSelect');
+  if (sortSelect) sortSelect.addEventListener('change', (e) => { currentSort = e.target.value; currentPage = 1; renderProducts(); });
+  
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) searchInput.addEventListener('input', (e) => { searchTerm = e.target.value; onlyFavorites = false; currentPage = 1; renderProducts(); });
+  
+  const priceRange = document.getElementById('priceRange');
+  const priceValue = document.getElementById('priceValue');
+  if (priceRange && priceValue) {
+    priceRange.addEventListener('input', (e) => { maxPrice = parseInt(e.target.value); priceValue.innerText = `Até R$ ${maxPrice}`; currentPage = 1; renderProducts(); });
+  }
+  
+  const newsBtn = document.getElementById('newsBtn');
+  if (newsBtn) {
+    newsBtn.addEventListener('click', () => { 
+      let email = document.getElementById('newsEmail').value; 
+      if (email && email.includes('@')) { localStorage.setItem('newsletter', email); alert('✅ Inscrição realizada!'); } 
+      else alert('E-mail inválido.'); 
+    });
+  }
+  
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => { e.preventDefault(); alert('Mensagem enviada!'); e.target.reset(); });
+  }
+  
+  window.addEventListener('scroll', () => { 
+    const backBtn = document.getElementById('backToTop');
+    if (backBtn) backBtn.style.display = window.scrollY > 300 ? 'flex' : 'none'; 
   });
+  
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  
+  document.querySelectorAll('.heart-team').forEach(btn => btn.addEventListener('click', (e) => { 
+    e.preventDefault(); 
+    const team = btn.dataset.team; 
+    if (searchInput) searchInput.value = team;
+    searchTerm = team; 
+    onlyFavorites = false; 
+    currentPage = 1; 
+    renderProducts(); 
+    document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' }); 
+  }));
+  
+  document.querySelectorAll('.faq-question').forEach(q => { 
+    q.addEventListener('click', () => { 
+      let ans = q.nextElementSibling; 
+      if (ans) ans.style.display = ans.style.display === 'block' ? 'none' : 'block'; 
+    }); 
+  });
+
+  // Botões de navegação
+  const favoritesNavBtn = document.getElementById('favoritesNavBtn');
+  if (favoritesNavBtn) {
+    favoritesNavBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      onlyFavorites = true;
+      currentCategory = "todos";
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      currentPage = 1;
+      renderProducts();
+      document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 
   // Modal de conta
   const accountModal = new bootstrap.Modal(document.getElementById('accountModal'));
-  document.getElementById('accountNavBtn').addEventListener('click', (e) => {
-    e.preventDefault();
-    accountModal.show();
-  });
-  document.getElementById('doLogin').addEventListener('click', () => {
-    const email = document.getElementById('loginEmail').value;
-    const pwd = document.getElementById('loginPassword').value;
-    if (email && pwd) {
-      alert(`Bem-vindo de volta, ${email}!`);
-      accountModal.hide();
-    } else {
-      alert('Preencha e-mail e senha.');
-    }
-  });
-  document.getElementById('doRegister').addEventListener('click', () => {
-    const name = document.getElementById('regName').value;
-    const email = document.getElementById('regEmail').value;
-    const pwd = document.getElementById('regPassword').value;
-    if (name && email && pwd) {
-      alert(`Conta criada com sucesso, ${name}!`);
-      accountModal.hide();
-    } else {
-      alert('Preencha todos os campos.');
-    }
-  });
+  const accountNavBtn = document.getElementById('accountNavBtn');
+  if (accountNavBtn) {
+    accountNavBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      accountModal.show();
+    });
+  }
+  
+  const doLogin = document.getElementById('doLogin');
+  if (doLogin) {
+    doLogin.addEventListener('click', () => {
+      const email = document.getElementById('loginEmail').value;
+      const pwd = document.getElementById('loginPassword').value;
+      if (email && pwd) {
+        alert(`Bem-vindo de volta, ${email}!`);
+        accountModal.hide();
+      } else {
+        alert('Preencha e-mail e senha.');
+      }
+    });
+  }
+  
+  const doRegister = document.getElementById('doRegister');
+  if (doRegister) {
+    doRegister.addEventListener('click', () => {
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const pwd = document.getElementById('regPassword').value;
+      if (name && email && pwd) {
+        alert(`Conta criada com sucesso, ${name}!`);
+        accountModal.hide();
+      } else {
+        alert('Preencha todos os campos.');
+      }
+    });
+  }
 
   // Slick Carousels
   function initSlick() {
     const bestSellers = products.filter(p => p.bestSeller);
     const latest = products.slice(-4);
-    $('#bestSellers').slick({ slidesToShow: 4, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, responsive: [{ breakpoint: 992, settings: { slidesToShow: 2 } }, { breakpoint: 576, settings: { slidesToShow: 1 } }] });
-    $('#latestProducts').slick({ slidesToShow: 4, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, responsive: [{ breakpoint: 992, settings: { slidesToShow: 2 } }, { breakpoint: 576, settings: { slidesToShow: 1 } }] });
+    
     function addToCarousel(productsArray, containerId) {
       const html = productsArray.map(prod => `
         <div class="product-slide">
@@ -1164,16 +1270,33 @@
           </div>
         </div>
       `).join('');
-      document.getElementById(containerId).innerHTML = html;
-      document.querySelectorAll(`#${containerId} .btn-add-cart`).forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); const prod = products.find(p => p.id == parseInt(btn.dataset.id)); if (prod) openModal(prod); }));
-      document.querySelectorAll(`#${containerId} .product-img`).forEach(img => img.addEventListener('click', () => { const prod = products.find(p => p.id == img.dataset.id); if(prod) openModal(prod); }));
+      const container = document.getElementById(containerId);
+      if (container) {
+        container.innerHTML = html;
+        container.querySelectorAll('.btn-add-cart').forEach(btn => btn.addEventListener('click', (e) => { 
+          e.stopPropagation(); 
+          const prod = products.find(p => p.id == parseInt(btn.dataset.id)); 
+          if (prod) openModal(prod); 
+        }));
+        container.querySelectorAll('.product-img').forEach(img => img.addEventListener('click', () => { 
+          const prod = products.find(p => p.id == img.dataset.id); 
+          if(prod) openModal(prod); 
+        }));
+      }
     }
+    
     addToCarousel(latest, 'latestProducts');
     addToCarousel(bestSellers, 'bestSellers');
-    $('.slick-carousel').slick('refresh');
+    
+    if ($('#bestSellers').length && $('#latestProducts').length) {
+      $('#bestSellers').slick({ slidesToShow: 4, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, responsive: [{ breakpoint: 992, settings: { slidesToShow: 2 } }, { breakpoint: 576, settings: { slidesToShow: 1 } }] });
+      $('#latestProducts').slick({ slidesToShow: 4, slidesToScroll: 1, autoplay: true, autoplaySpeed: 3000, responsive: [{ breakpoint: 992, settings: { slidesToShow: 2 } }, { breakpoint: 576, settings: { slidesToShow: 1 } }] });
+    }
   }
+  
   setTimeout(initSlick, 100);
-  renderProducts(); loadCart();
+  renderProducts(); 
+  loadCart();
 </script>
 </body>
-</html> 
+</html>
