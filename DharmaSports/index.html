@@ -610,7 +610,6 @@
       <a href="#produtos" class="nav-link-custom mx-2">Produtos</a>
       <a href="#sobre" class="nav-link-custom mx-2">Sobre</a>
       <a href="#contato" class="nav-link-custom mx-2">Contato</a>
-      <!-- NOVOS BOTÕES -->
       <a href="#" id="favoritesNavBtn" class="nav-link-custom mx-2"><i class="fas fa-heart"></i> Favoritos</a>
       <a href="#" id="accountNavBtn" class="nav-link-custom mx-2"><i class="fas fa-user"></i> Minha Conta</a>
     </nav>
@@ -624,7 +623,7 @@
   </div>
 </header>
 
-<!-- Modal de Minha Conta -->
+<!-- Minha Conta -->
 <div class="modal fade" id="accountModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content bg-dark text-white">
@@ -659,32 +658,13 @@
   </div>
 </div>
 
-<!-- PROMOÇÃO COMPRE 3 PAGUE 2 COM CONTADOR -->
-<div class="container mt-4">
-  <div class="promo-banner text-center p-4" data-aos="fade-up">
-    <div class="row align-items-center">
-      <div class="col-md-7">
-        <h2 class="fw-bold display-6"><i class="fas fa-fire"></i> OFERTA POR TEMPO LIMITADO! <i class="fas fa-bolt"></i></h2>
-        <h3 class="text-warning">🔥 COMPRE 3 E PAGUE 2! 🔥</h3>
-        <p class="mb-2 fs-5">+ <i class="fas fa-tag"></i> R$80,00 DE CASHBACK na primeira compra!</p>
-        <div class="countdown-timer" id="countdownTimer">
-          <span id="days">00</span>d <span id="hours">00</span>h <span id="minutes">00</span>m <span id="seconds">00</span>s
-        </div>
-      </div>
-      <div class="col-md-5">
-        <a href="#produtos" class="btn btn-outline-light btn-lg px-4">Aproveitar Agora →</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- BANNER ANIMADO -->
 <section class="banner-animado">
   <div class="camada camada1"></div>
   <div class="camada camada2"></div>
 </section>
 
-<!-- CARROSSEL PRINCIPAL (igual) -->
+<!-- CARROSSEL PRINCIPAL -->
 <section id="inicio" class="mt-4">
   <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner rounded-4 overflow-hidden shadow">
@@ -855,22 +835,22 @@
 <script>
   AOS.init({ duration: 800, once: true });
 
-  // Produtos (8 produtos)
+  // Produtos (8 produtos) - CORRIGIDO
   const products = [
-    { id: 1, name: "Camisa Brasil Retrô", category: "Brasil", price: 109.90, rating: 4.8, icon: "fa-flag-checkered", images: { front: "camisa11.png", back: "camisa1.png" }, bestSeller: true },
-    { id: 2, name: "Conjunto Sport Pro", category: "Brasil", price: 189.90, rating: 4.9, icon: "fa-vest", images: { front: "camisa22.png", back: "camisa2.png" }, bestSeller: true },
-    { id: 3, name: "Camisa Argentina 2025", category: "Seleções", price: 119.90, rating: 4.7, icon: "fa-star", images: { front: "camisa33.png", back: "camisa3.png" }, bestSeller: false },
-    { id: 4, name: "Conjunto Treino Dry", category: "Brasil", price: 169.90, rating: 4.6, icon: "fa-person-running", images: { front: "camisa44.png", back: "camisa4.png" }, bestSeller: false },
-    { id: 5, name: "Camisa Flamengo Retro", category: "Brasil", price: 99.90, rating: 5.0, icon: "fa-crown", images: { front: "camisa55.png", back: "camisa5.png" }, bestSeller: true },
-    { id: 6, name: "Conjunto Essencial", category: "Brasil", price: 149.90, rating: 4.5, icon: "fa-shirt", images: { front: "camisa66.png", back: "camisa6.png" }, bestSeller: false },
-    { id: 7, name: "Camisa Real Madrid", category: "Europa", price: 129.90, rating: 4.9, icon: "fa-futbol", images: { front: "camisa77.png", back: "camisa7.png" }, bestSeller: true },
-    { id: 8, name: "Camisa Barcelona 25/26", category: "Europa", price: 159.90, rating: 4.8, icon: "fa-basketball", images: { front: "camisa88.png", back: "camisa8.png" }, bestSeller: false }
+    { id: 1, name: "Camisa West Ham United Retrô", category: "Retrô", price: 109.90, rating: 4.8, icon: "fa-flag-checkered", images: { front: "camisa11.png", back: "camisa1.png" }, bestSeller: true },
+    { id: 2, name: "Camisa Cruzeiro 2025", category: "Brasil", price: 189.90, rating: 4.9, icon: "fa-vest", images: { front: "camisa22.png", back: "camisa2.png" }, bestSeller: true },
+    { id: 3, name: "Camisa Cruzeiro 2024", category: "Brasil", price: 119.90, rating: 4.7, icon: "fa-star", images: { front: "camisa33.png", back: "camisa3.png" }, bestSeller: false },
+    { id: 4, name: "Conjunto Atlético Mineiro", category: "Brasil", price: 169.90, rating: 4.6, icon: "fa-person-running", images: { front: "camisa44.png", back: "camisa4.png" }, bestSeller: false },
+    { id: 5, name: "Camisa River Plate", category: "Seleções", price: 99.90, rating: 5.0, icon: "fa-crown", images: { front: "camisa55.png", back: "camisa5.png" }, bestSeller: true },
+    { id: 6, name: "Camisa Flamengo III", category: "Brasil", price: 149.90, rating: 4.5, icon: "fa-shirt", images: { front: "camisa66.png", back: "camisa6.png" }, bestSeller: false },
+    { id: 7, name: "Camisa Alemanha 2006", category: "Retrô", price: 129.90, rating: 4.9, icon: "fa-futbol", images: { front: "camisa77.png", back: "camisa7.png" }, bestSeller: true },
+    { id: 8, name: "Camisa Barcelona 2020/21", category: "Europa", price: 159.90, rating: 4.8, icon: "fa-basketball", images: { front: "camisa88.png", back: "camisa8.png" }, bestSeller: false }
   ];
 
   let cart = [], currentCategory = "todos", currentSort = "default", searchTerm = "", activeCoupon = false, shippingCost = 0;
   let maxPrice = 200, currentPage = 1, itemsPerPage = 8;
   let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  let onlyFavorites = false; // variável para controlar se estamos filtrando apenas favoritos
+  let onlyFavorites = false;
 
   let visitorCount = localStorage.getItem('visitorCount') ? parseInt(localStorage.getItem('visitorCount')) : 0;
   visitorCount++;
@@ -900,32 +880,6 @@
       bootstrap.Modal.getInstance(document.getElementById('newsletterModal')).hide();
     } else alert('E-mail inválido.');
   });
-
-  // Countdown
-  function startCountdown() {
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 3);
-    targetDate.setHours(23, 59, 59);
-    const updateTimer = () => {
-      const now = new Date();
-      const diff = targetDate - now;
-      if (diff <= 0) {
-        document.getElementById('countdownTimer').innerHTML = "Promoção encerrada!";
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (86400000)) / 3600000);
-      const minutes = Math.floor((diff % 3600000) / 60000);
-      const seconds = Math.floor((diff % 60000) / 1000);
-      document.getElementById('days').innerText = String(days).padStart(2,'0');
-      document.getElementById('hours').innerText = String(hours).padStart(2,'0');
-      document.getElementById('minutes').innerText = String(minutes).padStart(2,'0');
-      document.getElementById('seconds').innerText = String(seconds).padStart(2,'0');
-    };
-    updateTimer();
-    setInterval(updateTimer, 1000);
-  }
-  startCountdown();
 
   // Renderização com paginação e filtros
   function getFilteredProducts() {
@@ -1021,7 +975,6 @@
           Toastify({ text: "Adicionado aos favoritos!", duration: 1500, style: { background: "#2ecc71" } }).showToast();
         }
         localStorage.setItem('favorites', JSON.stringify(favorites));
-        // Se estiver no modo "apenas favoritos", re-renderiza para atualizar a lista
         if (onlyFavorites) renderProducts();
       });
     });
@@ -1137,7 +1090,7 @@
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentCategory = btn.dataset.category;
-    onlyFavorites = false; // ao selecionar uma categoria, desativa modo favoritos
+    onlyFavorites = false;
     currentPage = 1;
     renderProducts();
   }));
@@ -1156,9 +1109,7 @@
     e.preventDefault();
     onlyFavorites = true;
     currentCategory = "todos";
-    // Desmarcar botões de filtro ativos
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    // Não há um botão "Favoritos" no grupo de filtros, então apenas ativamos o modo
     currentPage = 1;
     renderProducts();
     document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' });
@@ -1225,4 +1176,4 @@
   renderProducts(); loadCart();
 </script>
 </body>
-</html>
+</html> 
