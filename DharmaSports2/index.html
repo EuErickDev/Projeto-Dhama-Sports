@@ -552,18 +552,16 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     // PRODUTOS - FRENTE (camisaXX.png) e VERSO (camisaX.png)
-    const produtosData = [
-      { nome: "West Ham United Retrô", preco: 109.90, frente: "camisa11.png", verso: "camisa1.png", destaque: true, tipo: "Camisa" },
-      { nome: "Classic England 90", preco: 119.90, frente: "camisa22.png", verso: "camisa2.png", destaque: true, tipo: "Camisa" },
-      { nome: "Ajax Vintage", preco: 114.90, frente: "camisa33.png", verso: "camisa3.png", destaque: true, tipo: "Camisa" },
-      { nome: "Borussia Dortmund Retro", preco: 124.90, frente: "camisa44.png", verso: "camisa4.png", destaque: false, tipo: "Camisa" },
-      { nome: "Olympique Marseille", preco: 109.90, frente: "camisa55.png", verso: "camisa5.png", destaque: false, tipo: "Camisa" },
-      { nome: "River Plate Clássica", preco: 99.90, frente: "camisa66.png", verso: "camisa6.png", destaque: false, tipo: "Camisa" },
-      { nome: "Boca Juniors 2000", preco: 119.90, frente: "camisa77.png", verso: "camisa7.png", destaque: true, tipo: "Camisa" },
-      { nome: "Inter Miami Original", preco: 139.90, frente: "camisa88.png", verso: "camisa8.png", destaque: false, tipo: "Camisa" },
-      { nome: "Calça Esportiva Classic", preco: 159.90, frente: "camisa1.png", verso: "camisa1.png", destaque: false, tipo: "Calça" },
-      { nome: "Conjunto Treino Preto", preco: 229.90, frente: "camisa2.png", verso: "camisa2.png", destaque: false, tipo: "Conjunto" }
-    ];
+   const products = [
+    { id: 1, name: "Camisa West Ham United Retrô", category: "Retrô", price: 109.90, rating: 4.8, icon: "fa-flag-checkered", images: { front: "camisa11.png", back: "camisa1.png" }, bestSeller: true },
+    { id: 2, name: "Camisa Cruzeiro 2025", category: "Brasil", price: 189.90, rating: 4.9, icon: "fa-vest", images: { front: "camisa22.png", back: "camisa2.png" }, bestSeller: true },
+    { id: 3, name: "Camisa Cruzeiro 2024", category: "Brasil", price: 119.90, rating: 4.7, icon: "fa-star", images: { front: "camisa33.png", back: "camisa3.png" }, bestSeller: false },
+    { id: 4, name: "Conjunto Atlético Mineiro", category: "Brasil", price: 169.90, rating: 4.6, icon: "fa-person-running", images: { front: "camisa44.png", back: "camisa4.png" }, bestSeller: false },
+    { id: 5, name: "Camisa River Plate", category: "Seleções", price: 99.90, rating: 5.0, icon: "fa-crown", images: { front: "camisa55.png", back: "camisa5.png" }, bestSeller: true },
+    { id: 6, name: "Camisa Flamengo III", category: "Brasil", price: 149.90, rating: 4.5, icon: "fa-shirt", images: { front: "camisa66.png", back: "camisa6.png" }, bestSeller: false },
+    { id: 7, name: "Camisa Alemanha 2006", category: "Retrô", price: 129.90, rating: 4.9, icon: "fa-futbol", images: { front: "camisa77.png", back: "camisa7.png" }, bestSeller: true },
+    { id: 8, name: "Camisa Barcelona 2020/21", category: "Europa", price: 159.90, rating: 4.8, icon: "fa-basketball", images: { front: "camisa88.png", back: "camisa8.png" }, bestSeller: false }
+  ];
 
     let carrinho = [];
     let cartModalInstance;
